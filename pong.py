@@ -38,6 +38,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
+ball.dx = 0.15
+ball.dy = 0.15
 
 # FUNCTION
 
@@ -64,9 +66,31 @@ def paddle_b_down():
 win.listen()
 win.onkeypress(paddle_a_up, "w")
 win.onkeypress(paddle_a_down, "s")
-win.onkeypress(paddle_b_up, "8")
-win.onkeypress(paddle_b_down, "5")
+win.onkeypress(paddle_b_up, "Up")
+win.onkeypress(paddle_b_down, "Down")
 
 # MAIN LOOP
 while True:
     win.update()
+
+    # BALL MOVEMENT
+
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    # BORDER CHECKING
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= -1
+
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy *= -1
+
+    if ball.xcor() > 390:
+        ball.goto(0, 0)
+        ball.dx *= -1
+        
+    if ball.xcor() < -390:
+        ball.goto(0, 0)
+        ball.dx *= -1
