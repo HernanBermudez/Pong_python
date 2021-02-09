@@ -32,8 +32,40 @@ paddle_b.goto(350, 0)
 
 # BALL
 
+ball = turtle.Turtle()
+ball.speed(0) # MAXIMUM POSSIBLE SPEED
+ball.shape("square")
+ball.color("white")
+ball.penup()
+ball.goto(0, 0)
 
+# FUNCTION
 
+def paddle_a_up():
+    y = paddle_a.ycor()
+    y += 20
+    paddle_a.sety(y)
+
+def paddle_a_down():
+    y = paddle_a.ycor()
+    y -= 20
+    paddle_a.sety(y)
+
+def paddle_b_up():
+    y = paddle_b.ycor()
+    y += 20
+    paddle_b.sety(y)
+
+def paddle_b_down():
+    y = paddle_b.ycor()
+    y -= 20
+    paddle_b.sety(y)
+
+win.listen()
+win.onkeypress(paddle_a_up, "w")
+win.onkeypress(paddle_a_down, "s")
+win.onkeypress(paddle_b_up, "8")
+win.onkeypress(paddle_b_down, "5")
 
 # MAIN LOOP
 while True:
