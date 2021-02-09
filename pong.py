@@ -38,7 +38,7 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 0.15
+ball.dx = 0.15 # CONTROL THE SPEED OF THE BALL
 ball.dy = 0.15
 
 # FUNCTION
@@ -93,4 +93,11 @@ while True:
         
     if ball.xcor() < -390:
         ball.goto(0, 0)
+        ball.dx *= -1
+
+    # PADDLE AND BALL COLISIONS
+    if (ball.xcor() >= 340 and ball.xcor() <= 350) and (ball.ycor() <= paddle_b.ycor() + 40 and ball.ycor() >= paddle_b.ycor() - 40):
+        ball.dx *= -1
+
+    if (ball.xcor() <= -340 and ball.xcor() >= -350) and (ball.ycor() <= paddle_a.ycor() + 40 and ball.ycor() >= paddle_a.ycor() - 40):
         ball.dx *= -1
