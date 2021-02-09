@@ -46,7 +46,7 @@ ball.goto(0, 0)
 ball.dx = 0.18 # CONTROL THE SPEED OF THE BALL
 ball.dy = 0.18
 
-# PEN
+# PEN = SCORES
 
 pen = turtle.Turtle()
 pen.speed(0)
@@ -55,6 +55,14 @@ pen.penup()
 pen.hideturtle()
 pen.goto(0, 260)
 pen.write("Player A: 0  Player B: 0", align = "center" , font = ("Courier", 24, "normal"))
+# PEND = GAME OVER MESSAGE IN COMBINATION WITH PEN
+pend = turtle.Turtle()
+pend.speed(0)
+pend.color("white")
+pend.penup()
+pend.hideturtle()
+pend.goto(0, 230)
+
 
 # FUNCTION
 
@@ -127,3 +135,12 @@ while True:
     if (ball.xcor() <= -335 and ball.xcor() >= -355) and (ball.ycor() <= paddle_a.ycor() + 55 and ball.ycor() >= paddle_a.ycor() - 55):
         ball.dx *= -1
         winsound.PlaySound("bounce.wav", winsound.SND_ASYNC)
+
+    if score_a == 3 or score_b == 3:
+        ball.goto(0,0)
+        paddle_a.goto(-350,0)
+        paddle_b.goto(350,0)
+        pen.clear()
+        pen.write("GAME OVER", align = "center" , font = ("Courier", 24, "normal"))
+        pend.write("THANKS FOR PLAYING :)", align = "center" , font = ("Courier", 24, "normal"))
+        StopIteration
